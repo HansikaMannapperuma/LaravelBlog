@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\welcomeController::class,'index'])->name('welcome');
 
 Auth::routes();
 
@@ -23,3 +21,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //posts
 Route::post('/post/store',[\App\Http\Controllers\PostController::class,'store'])->name('post.store');
+Route::get('/post/{postId}/show',[\App\Http\Controllers\PostController::class,'show'])->name('post.show');

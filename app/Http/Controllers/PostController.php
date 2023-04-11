@@ -16,4 +16,8 @@ class PostController extends Controller
 
         return back();
     }
+    public function show($postId){
+        $post=post::findOrFail($postId);
+        return view('posts.show',compact('post'));
+    }
 }
